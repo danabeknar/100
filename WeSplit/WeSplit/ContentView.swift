@@ -10,7 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            Form {
+                Section {
+                    Text("Hello, World!")
+                }
+            }
+            .navigationBarTitle(Text("SwiftUI"))
+        }
     }
 }
 
