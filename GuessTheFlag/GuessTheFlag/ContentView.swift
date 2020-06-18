@@ -11,7 +11,14 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            AngularGradient(gradient: Gradient(colors: [.red, .blue, .purple, .yellow, .orange]), center: .center)
+            Button(action: {
+                print("Button was tapped")
+            }) {
+                HStack(spacing: 10) {
+                    Image(systemName: "pencil")
+                    Text("Edit")
+                }
+            }
         }
     }
 }
