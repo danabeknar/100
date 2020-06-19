@@ -9,15 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingAlert = false
+    var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
+    var correctAnswer = Int.random(in: 0...2)
     
     var body: some View {
-        Button("Show Alert") {
-            self.showingAlert = true
-        }
-        .alert(isPresented: $showingAlert) {
-            Alert(title: Text("Title"), message: Text("Message"), dismissButton: .default(Text("Ok")))
-        }
+        return Text("Guess the Flag")
     }
 }
 
