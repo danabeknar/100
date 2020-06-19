@@ -9,11 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
+    var countries = ["Estonia", "France", "Germany", "Ireland",
+                     "Italy", "Nigeria", "Poland", "Russia",
+                     "Spain", "UK", "US"]
     var correctAnswer = Int.random(in: 0...2)
     
     var body: some View {
-        return Text("Guess the Flag")
+        VStack {
+            Text("Tap the flag of")
+            Text(countries[correctAnswer])
+        }
     }
 }
 
