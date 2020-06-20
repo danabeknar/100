@@ -16,6 +16,7 @@ struct ContentView: View {
     
     @State private var showingScore = false
     @State private var scoreTitle = ""
+    @State private var scoreSubtitle = ""
     @State private var score = 0
     
     var body: some View {
@@ -27,7 +28,9 @@ struct ContentView: View {
             VStack(spacing: 30) {
                 VStack {
                     Text("Tap the flag of")
+                        .foregroundColor(.white)
                     Text(countries[correctAnswer])
+                        .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.black)
                 }
@@ -39,7 +42,7 @@ struct ContentView: View {
                         Image(self.countries[number])
                             .renderingMode(.original)
                             .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+                            .overlay(Capsule().stroke(Color.white, lineWidth: 1))
                             .shadow(color: .black, radius: 2)
                     }
                 }
@@ -52,7 +55,7 @@ struct ContentView: View {
         }
         .alert(isPresented: $showingScore) {
             Alert(title: Text(scoreTitle),
-                  message: Text("Your score is \(score)"),
+                  message: Text(scoreSubtitle),
                   dismissButton: .default(Text("Continue")) {
                     self.askQuestion()
             })
@@ -61,13 +64,29 @@ struct ContentView: View {
     
     func flagTapped(_ number: Int) {
         let answeredRight = number == correctAnswer
-        scoreTitle = answeredRight ? "Correct" : "Wrong"
-        score += answeredRight ? 1 : -1
-        if (score < 0) {
-            score = 0
-        }
+        
+        modifyScore(answeredRight: answeredRight)
+        modifyTitle(answeredRight: answeredRight)
+        modifySubtitle(answeredRight: answeredRight, number: number)
         
         showingScore = true
+    }
+    
+    func modifyTitle(answeredRight: Bool) {
+        scoreTitle = answeredRight ? "Correct" : "Wrong"
+    }
+    
+    func modifySubtitle(answeredRight: Bool, number: Int) {
+        if answeredRight {
+            scoreSubtitle = "Your score is \(score)"
+        } else {
+            scoreSubtitle = "Wrong! That's a flag of the \(countries[number])"
+        }
+    }
+    
+    func modifyScore(answeredRight: Bool) {
+        score += answeredRight ? 1 : -1
+        score = score < 0 ? 0 : score
     }
     
     func askQuestion() {
