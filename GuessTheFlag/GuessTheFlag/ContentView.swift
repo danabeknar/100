@@ -16,6 +16,7 @@ struct ContentView: View {
     
     @State private var showingScore = false
     @State private var scoreTitle = ""
+    @State private var score = 0
     
     var body: some View {
         ZStack {
@@ -48,7 +49,7 @@ struct ContentView: View {
         }
         .alert(isPresented: $showingScore) {
             Alert(title: Text(scoreTitle),
-                  message: Text("Your score is ???"),
+                  message: Text("Your score is \(score)"),
                   dismissButton: .default(Text("Continue")) {
                     self.askQuestion()
             })
@@ -56,7 +57,12 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
-        scoreTitle = number == correctAnswer ? "Correct" : "Wrong"
+        let answeredRight = number == correctAnswer
+        scoreTitle = answeredRight ? "Correct" : "Wrong"
+        score += answeredRight ? 1 : -1
+        if (score < 0) {
+            score = 0
+        }
         
         showingScore = true
     }
