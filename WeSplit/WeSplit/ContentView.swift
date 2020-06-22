@@ -34,6 +34,10 @@ struct ContentView: View {
     private var totalAmount: Double {
         orderAmount + (orderAmount*tipSelection)/100
     }
+    
+    private var isZeroTipSelected: Bool {
+        return tipPercantage == tipPercentages.count - 1
+    }
      
     var body: some View {
         NavigationView {
@@ -61,6 +65,7 @@ struct ContentView: View {
                 
                 Section(header: Text("Total amount")) {
                     Text("$ \(totalAmount, specifier: "%.2f")")
+                        .foregroundColor(isZeroTipSelected ? .red : .none)
                 }
             }
         .navigationBarTitle("We Split")
