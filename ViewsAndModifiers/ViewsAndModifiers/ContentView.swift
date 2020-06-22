@@ -8,36 +8,32 @@
 
 import SwiftUI
 
-struct GridStack<Content: View>:View {
-    let rows: Int
-    let columns: Int
-    let content: (Int, Int) -> Content
+struct ProminentTitle: ViewModifier {
+    var text: String
     
-    var body: some View {
-        VStack {
-            ForEach(0 ..< rows) { row in
-                HStack {
-                    ForEach(0 ..< self.columns) { column in
-                        self.content(row, column)
-                    }
-                }
-            }
+    func body(content: Content) -> some View {
+        ZStack(alignment: .topLeading) {
+            content
+            
+            Text(text)
+                .padding(5)
+                .font(.largeTitle)
+                .foregroundColor(.blue)
         }
     }
-    
-    init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content) {
-        self.rows = rows
-        self.columns = columns
-        self.content = content
+}
+
+extension View {
+    func withProminentTitle(text: String) -> some View {
+        self.modifier(ProminentTitle(text: text))
     }
 }
 
 struct ContentView: View {
     var body: some View {
-        GridStack(rows: 4, columns: 4) { row, col in
-            Image(systemName: "\(row * 4 + col).circle")
-            Text("R \(row) C\(col)")
-        }
+        Color.red
+            .frame(width: 200, height: 200)
+            .withProminentTitle(text: "Hello, World")
     }
 }
 
