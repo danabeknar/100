@@ -13,6 +13,7 @@
 		0D18B06924A2627E004E1601 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D18B06824A2627E004E1601 /* Assets.xcassets */; };
 		0D18B06C24A2627E004E1601 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D18B06B24A2627E004E1601 /* Preview Assets.xcassets */; };
 		0D18B06F24A2627E004E1601 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D18B06D24A2627E004E1601 /* LaunchScreen.storyboard */; };
+		0D18B07724A264CD004E1601 /* RPSOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18B07624A264CD004E1601 /* RPSOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0D18B06B24A2627E004E1601 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0D18B06E24A2627E004E1601 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D18B07024A2627E004E1601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D18B07624A264CD004E1601 /* RPSOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPSOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				0D18B06D24A2627E004E1601 /* LaunchScreen.storyboard */,
 				0D18B07024A2627E004E1601 /* Info.plist */,
 				0D18B06A24A2627E004E1601 /* Preview Content */,
+				0D18B07624A264CD004E1601 /* RPSOption.swift */,
 			);
 			path = RPS;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D18B07724A264CD004E1601 /* RPSOption.swift in Sources */,
 				0D18B06324A2627B004E1601 /* AppDelegate.swift in Sources */,
 				0D18B06524A2627B004E1601 /* SceneDelegate.swift in Sources */,
 				0D18B06724A2627B004E1601 /* ContentView.swift in Sources */,
