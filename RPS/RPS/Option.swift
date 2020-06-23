@@ -1,5 +1,5 @@
 //
-//  RPSOption.swift
+//  Option.swift
 //  RPS
 //
 //  Created by Beknar Danabek on 6/23/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RPSOption: CustomStringConvertible, CaseIterable {
+enum Option: CustomStringConvertible, CaseIterable {
     case rock
     case paper
     case scissors

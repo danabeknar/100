@@ -9,83 +9,63 @@
 import SwiftUI
 
 struct ContentView: View {
-    let moves: [RPSOption] = RPSOption.allCases
+    @State private var game = RockPaperScissors()
+    @State private var score = 0
+    let moves: [Option] = Option.allCases
     
-    @State var currentChoice: RPSOption = RPSOption.allCases.randomElement()!
+    @State var currentChoice: Option = Option.allCases.randomElement()!
     @State var shouldWin = Bool.random()
-    @State var score = 0
     @State var showingAlert = false
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("Your score: \(score)")
-                    .padding(.bottom)
-                    
-                Text("App's move: \(currentChoice.description)")
-                Text("Your should \(shouldWin ? "win" : "lose")")
+                GoalView(goal: game.goal)
+                OptionView(option: game.option)
+                    .font(.system(size: 60))
                 
                 HStack {
-                    ForEach (0..<moves.count) { index in
+                    ForEach(Option.allCases, id: \.self) { option in
                         Button(action: {
-                            self.didPressOption(self.moves[index])
-                        }) {
-                            Text("\(self.moves[index].description)")
-                        }
-                        .padding(30)
+                            self.didPressOption(option)
+                        }, label: {
+                            OptionView(option: option)
+                                .font(.largeTitle)
+                                .padding()
+                        })
                     }
                 }
+                
+                Text("Score: \(score)")
             }
             .navigationBarTitle("RPS")
         }
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("Game over"), message: Text("Your score is 10"), dismissButton: .default(Text("Start again")) {
-                self.startAgain()
+                self.newGame()
             })
         }
     }
     
-    private func didPressOption(_ option: RPSOption) {
-        if currentChoice == .rock {
-            if option == .paper {
-                score += shouldWin ? +1 : -1
-            } else if option == .scissors {
-                score += shouldWin ? -1 : +1
-            }
-        } else if currentChoice == .paper {
-            if option == .rock {
-                score += shouldWin ? -1 : +1
-            } else if option == .scissors {
-                score += shouldWin ? +1 : -1
-            }
-        } else {
-            if option == .paper {
-                score += shouldWin ? -1 : +1
-            } else if option == .rock {
-                score += shouldWin ? +1 : -1
-            }
-        }
-        
-        if score < 0 {
-            score = 0
-        }
-        
-        if score == 2 {
-            showingAlert = true
-        }
-        
-        updateState()
-    }
-    
-    private func startAgain() {
-        showingAlert = false
+    private func newGame() {
         score = 0
-        updateState()
+        showingAlert = false
+        newQuestion()
     }
     
-    private func updateState() {
-        shouldWin.toggle()
-        currentChoice = RPSOption.allCases.randomElement()!
+    private func didPressOption(_ option: Option) {
+        let win = game.isCorrect(guess: option)
+        score += win ? 1 : -1
+        
+        if score == 10 {
+            showingAlert = true
+        } else {
+            newQuestion()
+        }
+    }
+    
+    private func newQuestion() {
+        game = RockPaperScissors()
     }
 }
 
