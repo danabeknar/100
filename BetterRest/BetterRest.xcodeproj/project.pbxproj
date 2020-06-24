@@ -13,6 +13,7 @@
 		0D7FA8B924A3A5BA0057ACAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D7FA8B824A3A5BA0057ACAD /* Assets.xcassets */; };
 		0D7FA8BC24A3A5BA0057ACAD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D7FA8BB24A3A5BA0057ACAD /* Preview Assets.xcassets */; };
 		0D7FA8BF24A3A5BA0057ACAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D7FA8BD24A3A5BA0057ACAD /* LaunchScreen.storyboard */; };
+		0D7FA8C724A3B2CD0057ACAD /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0D7FA8C624A3B2CD0057ACAD /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0D7FA8BB24A3A5BA0057ACAD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0D7FA8BE24A3A5BA0057ACAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D7FA8C024A3A5BA0057ACAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D7FA8C624A3B2CD0057ACAD /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		0D7FA8B124A3A5B70057ACAD /* BetterRest */ = {
 			isa = PBXGroup;
 			children = (
+				0D7FA8C624A3B2CD0057ACAD /* SleepCalculator.mlmodel */,
 				0D7FA8B224A3A5B70057ACAD /* AppDelegate.swift */,
 				0D7FA8B424A3A5B70057ACAD /* SceneDelegate.swift */,
 				0D7FA8B624A3A5B70057ACAD /* ContentView.swift */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D7FA8B324A3A5B70057ACAD /* AppDelegate.swift in Sources */,
+				0D7FA8C724A3B2CD0057ACAD /* SleepCalculator.mlmodel in Sources */,
 				0D7FA8B524A3A5B70057ACAD /* SceneDelegate.swift in Sources */,
 				0D7FA8B724A3A5B70057ACAD /* ContentView.swift in Sources */,
 			);
