@@ -54,20 +54,17 @@ struct ContentView: View {
                     }
                     .labelsHidden()
                 }
+                
+                Section(header: Text("Your ideal bedtime is")) {
+                    Text(calculateBedtime())
+                        .font(.callout)
+                }
             }
             .navigationBarTitle("BetterRest")
-            .navigationBarItems(trailing:
-                Button(action: calculateBedtime) {
-                    Text("Calculate")
-                }
-            )
-                .alert(isPresented: $showingAlert) { () -> Alert in
-                    Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("Ok")))
-            }
         }
     }
     
-    func calculateBedtime() {
+    func calculateBedtime() -> String {
         let model = SleepCalculator()
         
         let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
@@ -82,14 +79,10 @@ struct ContentView: View {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
             
-            alertMessage = formatter.string(from: sleepTime)
-            alertTitle = "Your ideal bedtime is "
+            return formatter.string(from: sleepTime)
         } catch {
-            alertTitle = "Error"
-            alertMessage = "Sorry, there was a problem calculating your bedtime."
+            return "Sorry, there was a problem calculating your bedtime."
         }
-        
-        showingAlert = true
     }
 }
 
