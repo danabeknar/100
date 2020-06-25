@@ -29,6 +29,8 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+                
+                Text("Your score: \(usedWords.count)")
             }
             .navigationBarTitle(rootWord)
             .navigationBarItems(leading: Button("Restart", action: startGame))
