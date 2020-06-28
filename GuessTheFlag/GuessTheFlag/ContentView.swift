@@ -30,6 +30,9 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var scoreSubtitle = ""
     @State private var score = 0
+
+    @State private var animationAmount = 0.0
+    @State private var animatingFlags = [false, false, false]
     
     var body: some View {
         ZStack {
@@ -49,10 +52,17 @@ struct ContentView: View {
                 
                 ForEach (0 ..< 3) { number in
                     Button(action: {
-                        self.flagTapped(number)
+                        self.flagTapped(number: number)
+                        if self.animatingFlags[number] {
+                            withAnimation {
+                                self.animationAmount += 360
+                            }
+                        }
                     }) {
                         FlagImage(imageName: self.countries[number])
                     }
+                    .rotation3DEffect(.degrees(self.animatingFlags[number] ? self.animationAmount : 0.0),
+                                      axis: (x: 0, y: 1, z: 0))
                 }
                 Text("Your score is \(score)")
                     .foregroundColor(.white)
@@ -70,12 +80,13 @@ struct ContentView: View {
         }
     }
     
-    func flagTapped(_ number: Int) {
+    func flagTapped(number: Int) {
         let answeredRight = number == correctAnswer
         
         modifyScore(answeredRight: answeredRight)
         modifyTitle(answeredRight: answeredRight)
         modifySubtitle(answeredRight: answeredRight, number: number)
+        modifyAnimating(answeredRight: answeredRight, number: number)
         
         showingScore = true
     }
@@ -95,6 +106,10 @@ struct ContentView: View {
     func modifyScore(answeredRight: Bool) {
         score += answeredRight ? 1 : -1
         score = score < 0 ? 0 : score
+    }
+    
+    func modifyAnimating(answeredRight: Bool, number: Int) {
+        animatingFlags[number] = answeredRight
     }
     
     func askQuestion() {
