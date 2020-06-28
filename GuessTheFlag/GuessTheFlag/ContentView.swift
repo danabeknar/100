@@ -22,17 +22,18 @@ struct FlagImage: View {
 
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland",
-                             "Italy", "Nigeria", "Poland", "Russia",
-                             "Spain", "UK", "US"].shuffled()
+                                    "Italy", "Nigeria", "Poland", "Russia",
+                                    "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var scoreSubtitle = ""
     @State private var score = 0
-
+    
     @State private var animationAmount = 0.0
-    @State private var animatingFlags = [false, false, false]
+    @State private var correctAnimatingFlags = [false, false, false]
+    @State private var wrongAnimatingFlags = [false, false, false]
     @State private var flagsOpacity = [1.0, 1.0, 1.0]
     
     var body: some View {
@@ -54,7 +55,7 @@ struct ContentView: View {
                 ForEach (0 ..< 3) { number in
                     Button(action: {
                         self.flagTapped(number: number)
-                        if self.animatingFlags[number] {
+                        if self.correctAnimatingFlags[number] || self.wrongAnimatingFlags[number] {
                             withAnimation {
                                 self.animationAmount += 360
                             }
@@ -62,9 +63,11 @@ struct ContentView: View {
                     }) {
                         FlagImage(imageName: self.countries[number])
                     }
-                    .rotation3DEffect(.degrees(self.animatingFlags[number] ? self.animationAmount : 0.0),
+                        .rotation3DEffect(.degrees(self.correctAnimatingFlags[number] ? self.animationAmount : 0.0),
                                       axis: (x: 0, y: 1, z: 0))
-                    .opacity(self.flagsOpacity[number])
+                        .rotation3DEffect(.degrees(self.wrongAnimatingFlags[number] ? self.animationAmount : 0.0),
+                        axis: (x: 0, y: 0, z: 1))
+                        .opacity(self.flagsOpacity[number])
                 }
                 Text("Your score is \(score)")
                     .foregroundColor(.white)
@@ -78,7 +81,7 @@ struct ContentView: View {
                   message: Text(scoreSubtitle),
                   dismissButton: .default(Text("Continue")) {
                     self.askQuestion()
-            })
+                })
         }
     }
     
@@ -88,7 +91,8 @@ struct ContentView: View {
         modifyScore(answeredRight: answeredRight)
         modifyTitle(answeredRight: answeredRight)
         modifySubtitle(answeredRight: answeredRight, number: number)
-        modifyAnimating(answeredRight: answeredRight, number: number)
+        modifyCorrectAnimating(answeredRight: answeredRight, number: number)
+        modifyWrongAnimating(answeredRight: answeredRight, number: number)
         modifyOpacity(number: number)
         
         showingScore = true
@@ -111,8 +115,8 @@ struct ContentView: View {
         score = score < 0 ? 0 : score
     }
     
-    func modifyAnimating(answeredRight: Bool, number: Int) {
-        animatingFlags[number] = answeredRight
+    func modifyCorrectAnimating(answeredRight: Bool, number: Int) {
+        correctAnimatingFlags[number] = answeredRight
     }
     
     func modifyOpacity(number: Int) {
@@ -121,8 +125,16 @@ struct ContentView: View {
         }
     }
     
+    func modifyWrongAnimating(answeredRight: Bool, number: Int) {
+        guard !answeredRight else { return }
+        
+        wrongAnimatingFlags[number] = true
+    }
+    
     func askQuestion() {
         flagsOpacity = [1.0, 1.0, 1.0]
+        correctAnimatingFlags = [false, false, false]
+        wrongAnimatingFlags = [false, false, false]
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
