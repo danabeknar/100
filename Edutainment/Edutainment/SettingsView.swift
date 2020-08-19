@@ -10,9 +10,10 @@ import SwiftUI
 
 struct SettingsView: View {
     @State private var multiplicationTable = 1
-    
     @State private var questions = ["5", "10", "15", "All"]
     @State private var selectedQuestionsCount = 0
+    
+    var onStart: () -> ()?
     
     var body: some View {
         NavigationView {
@@ -37,7 +38,7 @@ struct SettingsView: View {
                 }
                 
                 Button(action: {
-                    // TODO
+                    self.onStart()
                 }, label: {
                     HStack {
                         Spacer()

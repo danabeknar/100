@@ -9,8 +9,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isSettingsActive = true
+    
     var body: some View {
-        SettingsView()
+        Group {
+            if isSettingsActive {
+                SettingsView(onStart: {
+                    self.isSettingsActive = false
+                })
+            } else {
+                Text("Hello world")
+            }
+        }
     }
 }
 
