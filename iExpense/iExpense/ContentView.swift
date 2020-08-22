@@ -39,6 +39,26 @@ class Expenses: ObservableObject {
     }
 }
 
+struct AmountTextStyle: ViewModifier {
+    let amount: Int
+    
+    func body(content: Content) -> some View {
+        var foregroundColor = Color.black
+        switch amount {
+        case 0...10:
+            foregroundColor = .red
+        case 10...50:
+            foregroundColor = .orange
+        case 100...:
+            foregroundColor = .green
+        default:
+            foregroundColor = .black
+        }
+        
+        return content.foregroundColor(foregroundColor)
+    }
+}
+
 struct ContentView: View {
     @ObservedObject var expenses = Expenses()
     @State private var showingAddExpense = false
@@ -55,7 +75,9 @@ struct ContentView: View {
                         }
                         
                         Spacer()
+                        
                         Text("$ \(item.amount)")
+                            .modifier(AmountTextStyle(amount: Int(item.amount)))
                     }
                 }
                 .onDelete(perform: removeItems)
@@ -77,7 +99,7 @@ struct ContentView: View {
         }
     }
     
-    func removeItems(at offsets: IndexSet) {
+    private func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
     }
 }
