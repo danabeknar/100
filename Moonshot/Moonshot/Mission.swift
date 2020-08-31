@@ -40,4 +40,18 @@ struct Mission: Codable, Identifiable {
     func contains(_ astronaut: Astronaut) -> Bool {
         return crew.map { $0.name }.contains(astronaut.id)
     }
+    
+    func crewNames(from astronauts: [Astronaut]) -> String {
+        var result = ""
+
+        for member in crew {
+            if let match = astronauts.first(where: { $0.id == member.name }) {
+                result += match.name + ", "
+            } else {
+                fatalError("Crew member \(member.name) not found")
+            }
+        }
+
+        return String(result.dropLast(2))
+    }
 }
