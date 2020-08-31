@@ -36,4 +36,8 @@ struct Mission: Codable, Identifiable {
             return "N/A"
         }
     }
+    
+    func contains(_ astronaut: Astronaut) -> Bool {
+        return crew.map { $0.name }.contains(astronaut.id)
+    }
 }
