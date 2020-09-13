@@ -11,8 +11,9 @@ import SwiftUI
 struct CheckoutView: View {
     @ObservedObject var order: Order
     
-    @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var showingAlert = false
     
     var body: some View {
         GeometryReader { geo in
@@ -30,8 +31,8 @@ struct CheckoutView: View {
                 }.padding()
             }
         }
-        .alert(isPresented: $showingConfirmation, content: { () -> Alert in
-            Alert(title: Text("Thank you!"), message: Text(confirmationMessage), dismissButton: .default(Text("Ok")))
+        .alert(isPresented: $showingAlert, content: { () -> Alert in
+            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("Ok")))
         })
             .navigationBarTitle("Check out", displayMode: .inline)
     }
@@ -50,14 +51,23 @@ struct CheckoutView: View {
         request.httpBody = encoded
         
         URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                self.alertTitle = "Error"
+                self.alertMessage = error.localizedDescription
+                self.showingAlert = true
+                
+                return
+            }
+            
             guard let data = data else {
                 print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
                 return
             }
             
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
-                self.confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
-                self.showingConfirmation = true
+                self.alertTitle = "Thank you!"
+                self.alertMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+                self.showingAlert = true
             } else {
                 print("Invalid response from server")
             }
