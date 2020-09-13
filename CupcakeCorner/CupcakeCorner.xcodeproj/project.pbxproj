@@ -13,6 +13,8 @@
 		A7DB9E98250E16FC0002AFE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DB9E97250E16FC0002AFE3 /* Assets.xcassets */; };
 		A7DB9E9B250E16FC0002AFE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DB9E9A250E16FC0002AFE3 /* Preview Assets.xcassets */; };
 		A7DB9E9E250E16FC0002AFE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7DB9E9C250E16FC0002AFE3 /* LaunchScreen.storyboard */; };
+		A7DB9EA6250E1C2D0002AFE3 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB9EA5250E1C2D0002AFE3 /* Order.swift */; };
+		A7DB9EA8250E20CF0002AFE3 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB9EA7250E20CF0002AFE3 /* AddressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A7DB9E9A250E16FC0002AFE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A7DB9E9D250E16FC0002AFE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7DB9E9F250E16FC0002AFE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7DB9EA5250E1C2D0002AFE3 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		A7DB9EA7250E20CF0002AFE3 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				A7DB9E9C250E16FC0002AFE3 /* LaunchScreen.storyboard */,
 				A7DB9E9F250E16FC0002AFE3 /* Info.plist */,
 				A7DB9E99250E16FC0002AFE3 /* Preview Content */,
+				A7DB9EA5250E1C2D0002AFE3 /* Order.swift */,
+				A7DB9EA7250E20CF0002AFE3 /* AddressView.swift */,
 			);
 			path = CupcakeCorner;
 			sourceTree = "<group>";
@@ -148,7 +154,9 @@
 			files = (
 				A7DB9E92250E16FB0002AFE3 /* AppDelegate.swift in Sources */,
 				A7DB9E94250E16FB0002AFE3 /* SceneDelegate.swift in Sources */,
+				A7DB9EA6250E1C2D0002AFE3 /* Order.swift in Sources */,
 				A7DB9E96250E16FB0002AFE3 /* ContentView.swift in Sources */,
+				A7DB9EA8250E20CF0002AFE3 /* AddressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
