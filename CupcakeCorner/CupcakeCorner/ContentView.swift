@@ -19,17 +19,26 @@ struct Result: Codable {
 }
 
 struct ContentView: View {
-    @State private var results = [Result]()
+    @State private var username = ""
+    @State private var email = ""
+    
+    var disabledForm: Bool {
+        username.count < 5 || email.count < 5
+    }
     
     var body: some View {
-        List(results, id: \.trackId) { item in
-            VStack(alignment: .leading) {
-                Text(item.trackName)
-                    .font(.headline)
-                Text(item.collectionName)
+        Form {
+            Section {
+                TextField("Username", text: $username)
+                TextField("Email", text: $email)
             }
+            
+            Section {
+                Button("Create account") {
+                    print("creating account")
+                }
+            }.disabled(disabledForm)
         }
-    .onAppear(perform: loadData)
     }
     
     func loadData() {
@@ -43,7 +52,7 @@ struct ContentView: View {
             if let data = data {
                 if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
                     DispatchQueue.main.async {
-                        self.results = decodedResponse.results
+//                        self.results = decodedResponse.results
                     }
                     
                     return
