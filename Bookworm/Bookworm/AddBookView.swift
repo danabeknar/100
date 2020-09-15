@@ -49,7 +49,7 @@ struct AddBookView: View {
 
                             try? self.moc.save()
                             self.presentationMode.wrappedValue.dismiss()
-                        }
+                        }.disabled(genre.isEmpty)
                     }
                 }
             }
