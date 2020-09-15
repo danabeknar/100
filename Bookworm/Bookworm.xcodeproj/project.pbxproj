@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A7B118202511237200482281 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B1181F2511237200482281 /* AddBookView.swift */; };
+		A7B118222511265500482281 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B118212511265500482281 /* RatingView.swift */; };
 		A7DB9ED8250EA5840002AFE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB9ED7250EA5840002AFE3 /* AppDelegate.swift */; };
 		A7DB9EDA250EA5840002AFE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB9ED9250EA5840002AFE3 /* SceneDelegate.swift */; };
 		A7DB9EDD250EA5840002AFE3 /* Bookworm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7DB9EDB250EA5840002AFE3 /* Bookworm.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		A7B1181F2511237200482281 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		A7B118212511265500482281 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		A7DB9ED4250EA5840002AFE3 /* Bookworm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookworm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DB9ED7250EA5840002AFE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7DB9ED9250EA5840002AFE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				A7DB9EDB250EA5840002AFE3 /* Bookworm.xcdatamodeld */,
 				A7DB9EE2250EA5850002AFE3 /* Preview Content */,
 				A7B1181F2511237200482281 /* AddBookView.swift */,
+				A7B118212511265500482281 /* RatingView.swift */,
 			);
 			path = Bookworm;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				A7DB9ED8250EA5840002AFE3 /* AppDelegate.swift in Sources */,
 				A7DB9EDD250EA5840002AFE3 /* Bookworm.xcdatamodeld in Sources */,
 				A7DB9EDF250EA5840002AFE3 /* ContentView.swift in Sources */,
+				A7B118222511265500482281 /* RatingView.swift in Sources */,
 				A7DB9EDA250EA5840002AFE3 /* SceneDelegate.swift in Sources */,
 				A7B118202511237200482281 /* AddBookView.swift in Sources */,
 			);
