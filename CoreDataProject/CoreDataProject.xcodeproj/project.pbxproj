@@ -11,8 +11,9 @@
 		A7CA338F2521091A00707749 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA338E2521091A00707749 /* ContentView.swift */; };
 		A7CA33912521091B00707749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7CA33902521091B00707749 /* Assets.xcassets */; };
 		A7CA33942521091B00707749 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7CA33932521091B00707749 /* Preview Assets.xcassets */; };
-		A7CA33962521091B00707749 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA33952521091B00707749 /* Persistence.swift */; };
 		A7CA33992521091B00707749 /* CoreDataProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7CA33972521091B00707749 /* CoreDataProject.xcdatamodeld */; };
+		A7CA33A3252114A100707749 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA33A1252114A100707749 /* Movie+CoreDataClass.swift */; };
+		A7CA33A4252114A100707749 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA33A2252114A100707749 /* Movie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +22,10 @@
 		A7CA338E2521091A00707749 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A7CA33902521091B00707749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7CA33932521091B00707749 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A7CA33952521091B00707749 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A7CA33982521091B00707749 /* CoreDataProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataProject.xcdatamodel; sourceTree = "<group>"; };
 		A7CA339A2521091B00707749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7CA33A1252114A100707749 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A7CA33A2252114A100707749 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +58,11 @@
 		A7CA338B2521091A00707749 /* CoreDataProject */ = {
 			isa = PBXGroup;
 			children = (
+				A7CA33A1252114A100707749 /* Movie+CoreDataClass.swift */,
+				A7CA33A2252114A100707749 /* Movie+CoreDataProperties.swift */,
 				A7CA338C2521091A00707749 /* CoreDataProjectApp.swift */,
 				A7CA338E2521091A00707749 /* ContentView.swift */,
 				A7CA33902521091B00707749 /* Assets.xcassets */,
-				A7CA33952521091B00707749 /* Persistence.swift */,
 				A7CA339A2521091B00707749 /* Info.plist */,
 				A7CA33972521091B00707749 /* CoreDataProject.xcdatamodeld */,
 				A7CA33922521091B00707749 /* Preview Content */,
@@ -144,9 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7CA33962521091B00707749 /* Persistence.swift in Sources */,
 				A7CA338F2521091A00707749 /* ContentView.swift in Sources */,
 				A7CA33992521091B00707749 /* CoreDataProject.xcdatamodeld in Sources */,
+				A7CA33A3252114A100707749 /* Movie+CoreDataClass.swift in Sources */,
+				A7CA33A4252114A100707749 /* Movie+CoreDataProperties.swift in Sources */,
 				A7CA338D2521091A00707749 /* CoreDataProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
