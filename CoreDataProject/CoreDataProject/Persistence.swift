@@ -14,8 +14,8 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Singer(context: viewContext)
-            newItem.firstName = "Asd"
+            let newItem = Candy(context: viewContext)
+            newItem.name = "Asd"
         }
         do {
             try viewContext.save()
@@ -32,6 +32,7 @@ struct PersistenceController {
 
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "CoreDataProject")
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
