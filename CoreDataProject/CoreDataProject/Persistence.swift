@@ -2,7 +2,7 @@
 //  Persistence.swift
 //  CoreDataProject
 //
-//  Created by Beknar Danabek on 9/27/20.
+//  Created by Beknar Danabek on 3.05.21.
 //
 
 import CoreData
@@ -14,8 +14,8 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = Ship(context: viewContext)
+            newItem.name = "Asd"
         }
         do {
             try viewContext.save()
