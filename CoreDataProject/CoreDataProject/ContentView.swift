@@ -9,42 +9,39 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(
-        entity: Ship.entity(),
-        sortDescriptors: [],
-        predicate: NSPredicate(format: "NOT name BEGINSWITH[c] %@", "e"))
-    private var ships: FetchedResults<Ship>
+    @Environment(\.managedObjectContext) private var moc
+    @State private var lastNameFilter = "A"
     
     var body: some View {
         VStack {
-            List(ships, id: \.self) { ship in
-                Text(ship.name ?? "Unknown name")
-            }
+            FilteredList(filter: lastNameFilter)
             
             Button("Add Examples") {
-                let ship1 = Ship(context: viewContext)
-                ship1.name = "Enterprise"
-                ship1.universe = "Star Trek"
+                let taylor = Singer(context: moc)
+                taylor.firstName = "Taylor"
+                taylor.lastName = "Swift"
                 
-                let ship2 = Ship(context: viewContext)
-                ship2.name = "Defiant"
-                ship2.universe = "Star Trek"
+                let ed = Singer(context: self.moc)
+                ed.firstName = "Ed"
+                ed.lastName = "Sheeran"
                 
-                let ship3 = Ship(context: viewContext)
-                ship3.name = "Millennium Falcon"
-                ship3.universe = "Star Wars"
+                let adele = Singer(context: self.moc)
+                adele.firstName = "Adele"
+                adele.lastName = "Adkins"
                 
-                let ship4 = Ship(context: viewContext)
-                ship4.name = "Executor"
-                ship4.universe = "Star Wars"
-                
-                try? viewContext.save()
+                try? moc.save()
+            }
+            
+            Button("Show A") {
+                lastNameFilter = "A"
+            }
+            
+            Button("Show S") {
+                lastNameFilter = "S"
             }
         }
     }
-
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
