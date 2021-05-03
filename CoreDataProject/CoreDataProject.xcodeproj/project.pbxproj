@@ -66,12 +66,12 @@
 				A779AD19264051DA00DAEF17 /* Singer+CoreDataProperties.swift */,
 				A78E591026404C830046E1DC /* CoreDataProjectApp.swift */,
 				A78E591226404C830046E1DC /* ContentView.swift */,
+				A779AD1D2640528A00DAEF17 /* FilteredList.swift */,
 				A78E591426404C840046E1DC /* Assets.xcassets */,
 				A78E591926404C840046E1DC /* Persistence.swift */,
 				A78E591E26404C840046E1DC /* Info.plist */,
 				A78E591B26404C840046E1DC /* CoreDataProject.xcdatamodeld */,
 				A78E591626404C840046E1DC /* Preview Content */,
-				A779AD1D2640528A00DAEF17 /* FilteredList.swift */,
 			);
 			path = CoreDataProject;
 			sourceTree = "<group>";
