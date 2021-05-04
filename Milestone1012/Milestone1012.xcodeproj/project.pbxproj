@@ -11,6 +11,13 @@
 		A71393A22641872200203465 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71393A12641872200203465 /* ContentView.swift */; };
 		A71393A42641872300203465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A71393A32641872300203465 /* Assets.xcassets */; };
 		A71393A72641872300203465 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A71393A62641872300203465 /* Preview Assets.xcassets */; };
+		A71393BE26418AEF00203465 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71393BD26418AEF00203465 /* UserView.swift */; };
+		A71393C32641925400203465 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A71393C12641925400203465 /* Model.xcdatamodeld */; };
+		A71393C62641928C00203465 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71393C52641928C00203465 /* Persistence.swift */; };
+		A71393CD2641936200203465 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71393C92641936200203465 /* User+CoreDataClass.swift */; };
+		A71393CE2641936200203465 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71393CA2641936200203465 /* User+CoreDataProperties.swift */; };
+		A71393CF2641936200203465 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71393CB2641936200203465 /* Friend+CoreDataClass.swift */; };
+		A71393D02641936200203465 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71393CC2641936200203465 /* Friend+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +27,13 @@
 		A71393A32641872300203465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A71393A62641872300203465 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A71393A82641872300203465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A71393BD26418AEF00203465 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		A71393C22641925400203465 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A71393C52641928C00203465 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		A71393C92641936200203465 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A71393CA2641936200203465 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A71393CB2641936200203465 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A71393CC2641936200203465 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +66,15 @@
 		A713939E2641872200203465 /* Milestone1012 */ = {
 			isa = PBXGroup;
 			children = (
+				A71393AF2641872D00203465 /* Models */,
+				A71393C12641925400203465 /* Model.xcdatamodeld */,
 				A713939F2641872200203465 /* Milestone1012App.swift */,
 				A71393A12641872200203465 /* ContentView.swift */,
+				A71393BD26418AEF00203465 /* UserView.swift */,
 				A71393A32641872300203465 /* Assets.xcassets */,
 				A71393A82641872300203465 /* Info.plist */,
 				A71393A52641872300203465 /* Preview Content */,
+				A71393C52641928C00203465 /* Persistence.swift */,
 			);
 			path = Milestone1012;
 			sourceTree = "<group>";
@@ -67,6 +85,17 @@
 				A71393A62641872300203465 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A71393AF2641872D00203465 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A71393C92641936200203465 /* User+CoreDataClass.swift */,
+				A71393CA2641936200203465 /* User+CoreDataProperties.swift */,
+				A71393CB2641936200203465 /* Friend+CoreDataClass.swift */,
+				A71393CC2641936200203465 /* Friend+CoreDataProperties.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +168,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A71393A22641872200203465 /* ContentView.swift in Sources */,
+				A71393CF2641936200203465 /* Friend+CoreDataClass.swift in Sources */,
+				A71393D02641936200203465 /* Friend+CoreDataProperties.swift in Sources */,
 				A71393A02641872200203465 /* Milestone1012App.swift in Sources */,
+				A71393BE26418AEF00203465 /* UserView.swift in Sources */,
+				A71393C62641928C00203465 /* Persistence.swift in Sources */,
+				A71393CD2641936200203465 /* User+CoreDataClass.swift in Sources */,
+				A71393C32641925400203465 /* Model.xcdatamodeld in Sources */,
+				A71393CE2641936200203465 /* User+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +364,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A71393C12641925400203465 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A71393C22641925400203465 /* Model.xcdatamodel */,
+			);
+			currentVersion = A71393C22641925400203465 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A71393942641872200203465 /* Project object */;
 }
