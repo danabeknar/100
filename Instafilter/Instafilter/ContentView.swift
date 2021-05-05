@@ -15,11 +15,20 @@ struct ContentView: View {
     }
     
     var body: some View {
+        let blur = Binding<CGFloat>(
+            get: {
+                self.blurAmount
+            },
+            set: {
+                self.blurAmount = $0
+                print("New value is \(self.blurAmount)")
+            }
+        )
         VStack {
             Text("Hello, world!")
                 .blur(radius: blurAmount)
             
-            Slider(value: $blurAmount, in: 0...20)
+            Slider(value: blur, in: 0...20)
         }
     }
 }
