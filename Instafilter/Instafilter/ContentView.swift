@@ -42,7 +42,7 @@ struct ContentView: View {
                 }
             }
             .onTapGesture {
-                // select an image
+                self.showingImagePicker = true
             }
             
             HStack {
@@ -59,13 +59,14 @@ struct ContentView: View {
         }
         .padding([.horizontal, .bottom])
         .navigationBarTitle("Instafilter")
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: $inputImage)
+        }
     }
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
-        let imageSaver = ImageSaver()
-        imageSaver.writeToPhotoAlbum(image: inputImage)
     }
 }
 
