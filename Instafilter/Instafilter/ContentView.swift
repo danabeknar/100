@@ -23,20 +23,42 @@ struct ContentView: View {
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var filterIntensity = 0.5
 
     var body: some View {
-        VStack {
-            image?
-                .resizable()
-                .scaledToFit()
-
-            Button("Select Image") {
-               self.showingImagePicker = true
+        NavigationView {
+            ZStack {
+                Rectangle()
+                    .fill(Color.secondary)
+                
+                if image != nil {
+                    image?
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    Text("Tap to select a picture")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                }
+            }
+            .onTapGesture {
+                // select an image
+            }
+            
+            HStack {
+                Button("Change filter") {
+                    // change filter
+                }
+                
+                Spacer()
+                
+                Button("Save") {
+                    
+                }
             }
         }
-        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-            ImagePicker(image: self.$inputImage)
-        }
+        .padding([.horizontal, .bottom])
+        .navigationBarTitle("Instafilter")
     }
     
     func loadImage() {
