@@ -9,16 +9,6 @@ import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-class ImageSaver: NSObject {
-    func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
-    }
-    
-    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        print("Save finished")
-    }
-}
-
 struct ContentView: View {
     @State private var image: Image?
     @State private var showingImagePicker = false
@@ -26,6 +16,7 @@ struct ContentView: View {
     @State private var filterIntensity = 0.5
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilterSheet = false
+    @State private var processedImage: UIImage?
     let context = CIContext()
     
     var body: some View {
@@ -72,7 +63,19 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save") {
-                        
+                        guard let processedImage = self.processedImage else { return }
+
+                        let imageSaver = ImageSaver()
+
+                        imageSaver.successHandler = {
+                            print("Success!")
+                        }
+
+                        imageSaver.errorHandler = {
+                            print("Oops: \($0.localizedDescription)")
+                        }
+
+                        imageSaver.writeToPhotoAlbum(image: processedImage)
                     }
                 }
             }
@@ -112,9 +115,10 @@ struct ContentView: View {
         
         guard let outputImage = currentFilter.outputImage else { return }
         
-        if let cgImg = context.createCGImage(outputImage, from: outputImage.extent) {
-            let uiImage = UIImage(cgImage: cgImg)
+        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+            let uiImage = UIImage(cgImage: cgimg)
             image = Image(uiImage: uiImage)
+            processedImage = uiImage
         }
     }
     
