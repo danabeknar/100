@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var filterIntensity = 0.5
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilterSheet = false
+    @State private var showingImageErrorAlert = false
     @State private var processedImage: UIImage?
     let context = CIContext()
     
@@ -63,7 +64,10 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save") {
-                        guard let processedImage = self.processedImage else { return }
+                        guard let processedImage = self.processedImage else {
+                            showingImageErrorAlert.toggle()
+                            return
+                        }
 
                         let imageSaver = ImageSaver()
 
@@ -96,6 +100,13 @@ struct ContentView: View {
                 .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
                 .cancel()
             ])
+        }
+        .alert(isPresented: $showingImageErrorAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text("Couldn't save image"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
     
