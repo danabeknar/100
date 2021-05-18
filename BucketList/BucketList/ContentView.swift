@@ -7,28 +7,37 @@
 
 import SwiftUI
 
+struct LoadingView: View {
+    var body: some View {
+        Text("Loading...")
+    }
+}
+
+struct SuccessView: View {
+    var body: some View {
+        Text("Success!")
+    }
+}
+
+struct FailedView: View {
+    var body: some View {
+        Text("Failed.")
+    }
+}
+
 struct ContentView: View {
-    let users = [
-        User(firstName: "Arnold", lastName: "Rimmer"),
-        User(firstName: "Kristine", lastName: "Kochanski"),
-        User(firstName: "David", lastName: "Lister"),
-    ].sorted()
+    var loadingState = LoadingState.loading
     
     var body: some View {
-        Text("Hello World")
-            .onTapGesture {
-                let str = "Test Message"
-                
-                let url = getDocumentsDirectory().appendingPathComponent("message.txt")
-                
-                do {
-                    try str.write(to: url, atomically: true, encoding: .utf8)
-                    let input = try String(contentsOf: url)
-                    print(input)
-                } catch {
-                    print(error.localizedDescription)
-                }
+        Group {
+            if loadingState == .loading {
+                LoadingView()
+            } else if loadingState == .success {
+                SuccessView()
+            } else if loadingState == .failed {
+                FailedView()
             }
+        }
     }
     
     func getDocumentsDirectory() -> URL {

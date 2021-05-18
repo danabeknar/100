@@ -12,6 +12,7 @@
 		A74F4FFD265456DD009CF793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A74F4FFC265456DD009CF793 /* Assets.xcassets */; };
 		A74F5000265456DD009CF793 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A74F4FFF265456DD009CF793 /* Preview Assets.xcassets */; };
 		A74F50092654573B009CF793 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F50082654573B009CF793 /* User.swift */; };
+		A74F500C265458D0009CF793 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F500B265458D0009CF793 /* LoadingState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A74F4FFF265456DD009CF793 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A74F5001265456DD009CF793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A74F50082654573B009CF793 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A74F500B265458D0009CF793 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				A74F5001265456DD009CF793 /* Info.plist */,
 				A74F4FFE265456DD009CF793 /* Preview Content */,
 				A74F50082654573B009CF793 /* User.swift */,
+				A74F500B265458D0009CF793 /* LoadingState.swift */,
 			);
 			path = BucketList;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74F500C265458D0009CF793 /* LoadingState.swift in Sources */,
 				A74F4FFB265456DC009CF793 /* ContentView.swift in Sources */,
 				A74F4FF9265456DC009CF793 /* BucketListApp.swift in Sources */,
 				A74F50092654573B009CF793 /* User.swift in Sources */,
