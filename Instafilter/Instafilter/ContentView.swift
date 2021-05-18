@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var filterIntensity = 0.5
+    @State private var filterRadius = 0.5
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilterSheet = false
     @State private var showingImageErrorAlert = false
@@ -28,6 +29,16 @@ struct ContentView: View {
             },
             set: {
                 self.filterIntensity = $0
+                applyProcessing()
+            }
+        )
+        
+        let radius = Binding<Double>(
+            get: {
+                self.filterRadius
+            },
+            set: {
+                self.filterRadius = $0
                 applyProcessing()
             }
         )
@@ -55,6 +66,11 @@ struct ContentView: View {
                 HStack {
                     Text("Intensity")
                     Slider(value: intensity)
+                }
+                
+                HStack {
+                    Text("Radius")
+                    Slider(value: radius)
                 }
                 
                 HStack {
@@ -143,7 +159,7 @@ struct ContentView: View {
     func applyProcessing() {
         let inputKeys = currentFilter.inputKeys
         if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
+        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey) }
         if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
         
         guard let outputImage = currentFilter.outputImage else { return }
