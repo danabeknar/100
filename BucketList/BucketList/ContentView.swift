@@ -29,15 +29,8 @@ struct ContentView: View {
     var loadingState = LoadingState.loading
     
     var body: some View {
-        Group {
-            if loadingState == .loading {
-                LoadingView()
-            } else if loadingState == .success {
-                SuccessView()
-            } else if loadingState == .failed {
-                FailedView()
-            }
-        }
+        MapView()
+            .edgesIgnoringSafeArea(.all)
     }
     
     func getDocumentsDirectory() -> URL {
