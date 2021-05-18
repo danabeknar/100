@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct LoadingView: View {
     var body: some View {
@@ -27,10 +28,17 @@ struct FailedView: View {
 
 struct ContentView: View {
     var loadingState = LoadingState.loading
+    @State private var isUnlocked = false
     
     var body: some View {
-        MapView()
-            .edgesIgnoringSafeArea(.all)
+        VStack {
+            if self.isUnlocked {
+                Text("Unlocked")
+            } else {
+                Text("Locked")
+            }
+        }
+        .onAppear(perform: authenticate)
     }
     
     func getDocumentsDirectory() -> URL {
@@ -39,6 +47,27 @@ struct ContentView: View {
 
         // just send back the first one, which ought to be the only one
         return paths[0]
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "We need to unlock your data."
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                                if success {
+                                    self.isUnlocked = true
+                                } else {
+                                    // there was a problem
+                                }
+                            }
+            }
+        } else {
+            
+        }
     }
 }
 
