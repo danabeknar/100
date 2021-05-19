@@ -68,7 +68,6 @@ struct MapView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        print("ASD")
         if annotations.count != (uiView as! MKMapView).annotations.count {
             (uiView as! MKMapView).removeAnnotations((uiView as! MKMapView).annotations)
             (uiView as! MKMapView).addAnnotations(annotations)
