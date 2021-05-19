@@ -28,7 +28,7 @@ struct EditView: View {
                             Text(page.title)
                                 .font(.headline)
                             + Text(": ") +
-                            Text("Page description here")
+                            Text(page.description)
                                 .italic()
                         }
                     } else if loadingState == .loading {
@@ -61,7 +61,7 @@ struct EditView: View {
 
                 if let items = try? decoder.decode(Result.self, from: data) {
                     // success – convert the array values to our pages array
-                    self.pages = Array(items.query.pages.values)
+                    self.pages = Array(items.query.pages.values).sorted()
                     self.loadingState = .loaded
                     return
                 }
