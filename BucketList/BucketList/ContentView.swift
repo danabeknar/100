@@ -7,38 +7,43 @@
 
 import SwiftUI
 import LocalAuthentication
-
-struct LoadingView: View {
-    var body: some View {
-        Text("Loading...")
-    }
-}
-
-struct SuccessView: View {
-    var body: some View {
-        Text("Success!")
-    }
-}
-
-struct FailedView: View {
-    var body: some View {
-        Text("Failed.")
-    }
-}
+import MapKit
 
 struct ContentView: View {
     var loadingState = LoadingState.loading
     @State private var isUnlocked = false
+    @State private var centerCoordinate = CLLocationCoordinate2D()
+    @State private var locations = [MKPointAnnotation]()
     
     var body: some View {
-        VStack {
-            if self.isUnlocked {
-                Text("Unlocked")
-            } else {
-                Text("Locked")
+        ZStack {
+            MapView(centerCoordinate: $centerCoordinate, annotations: locations)
+                .edgesIgnoringSafeArea(.all)
+            Circle()
+                .fill(Color.blue)
+                .opacity(0.3)
+                .frame(width: 32, height: 32)
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        let newLocation = MKPointAnnotation()
+                        newLocation.coordinate = centerCoordinate
+                        locations.append(newLocation)
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.75))
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .clipShape(Circle())
+                    .padding(.trailing)
+                }
             }
         }
-        .onAppear(perform: authenticate)
     }
     
     func getDocumentsDirectory() -> URL {
