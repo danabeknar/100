@@ -14,10 +14,15 @@ struct ContentView: View {
     @State private var isUnlocked = false
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var locations = [MKPointAnnotation]()
+    @State private var selectedPlace: MKPointAnnotation?
+    @State private var showingPlaceDetails = false
     
     var body: some View {
         ZStack {
-            MapView(centerCoordinate: $centerCoordinate, annotations: locations)
+            MapView(centerCoordinate: $centerCoordinate,
+                    selectedPlace: $selectedPlace,
+                    showingPlaceDetails: $showingPlaceDetails,
+                    annotations: locations)
                 .edgesIgnoringSafeArea(.all)
             Circle()
                 .fill(Color.blue)
@@ -31,6 +36,7 @@ struct ContentView: View {
                     Button(action: {
                         let newLocation = MKPointAnnotation()
                         newLocation.coordinate = centerCoordinate
+                        newLocation.title = "Example location"
                         locations.append(newLocation)
                     }) {
                         Image(systemName: "plus")
@@ -43,6 +49,13 @@ struct ContentView: View {
                     .padding(.trailing)
                 }
             }
+        }.alert(isPresented: $showingPlaceDetails) {
+            Alert(title: Text(selectedPlace?.title ?? "Unknown"),
+                  message: Text(selectedPlace?.subtitle ?? "Unknown"),
+                  primaryButton: .default(Text("OK")),
+                  secondaryButton: .default(Text("Edit")) {
+                
+            })
         }
     }
     
