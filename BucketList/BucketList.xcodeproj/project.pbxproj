@@ -14,6 +14,8 @@
 		A74F50092654573B009CF793 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F50082654573B009CF793 /* User.swift */; };
 		A74F500C265458D0009CF793 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F500B265458D0009CF793 /* LoadingState.swift */; };
 		A74F500F26545AEE009CF793 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F500E26545AEE009CF793 /* MapView.swift */; };
+		A799D19C2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799D19B2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift */; };
+		A799D19F2655AD4A00A7D384 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799D19E2655AD4A00A7D384 /* EditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		A74F50082654573B009CF793 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A74F500B265458D0009CF793 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		A74F500E26545AEE009CF793 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A799D19B2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-ObservableObject.swift"; sourceTree = "<group>"; };
+		A799D19E2655AD4A00A7D384 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		A74F4FF7265456DC009CF793 /* BucketList */ = {
 			isa = PBXGroup;
 			children = (
+				A799D19B2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift */,
 				A74F4FF8265456DC009CF793 /* BucketListApp.swift */,
 				A74F4FFA265456DC009CF793 /* ContentView.swift */,
 				A74F4FFC265456DD009CF793 /* Assets.xcassets */,
@@ -66,6 +71,7 @@
 				A74F50082654573B009CF793 /* User.swift */,
 				A74F500B265458D0009CF793 /* LoadingState.swift */,
 				A74F500E26545AEE009CF793 /* MapView.swift */,
+				A799D19E2655AD4A00A7D384 /* EditView.swift */,
 			);
 			path = BucketList;
 			sourceTree = "<group>";
@@ -148,8 +154,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A74F500C265458D0009CF793 /* LoadingState.swift in Sources */,
+				A799D19C2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift in Sources */,
 				A74F4FFB265456DC009CF793 /* ContentView.swift in Sources */,
 				A74F500F26545AEE009CF793 /* MapView.swift in Sources */,
+				A799D19F2655AD4A00A7D384 /* EditView.swift in Sources */,
 				A74F4FF9265456DC009CF793 /* BucketListApp.swift in Sources */,
 				A74F50092654573B009CF793 /* User.swift in Sources */,
 			);
