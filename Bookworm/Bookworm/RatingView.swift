@@ -30,6 +30,9 @@ struct RatingView: View {
             ForEach(1..<maximumRating + 1) { number in
                 self.image(for: number)
                     .foregroundColor(number > self.rating ? self.offColor : self.onColor)
+                    .accessibility(label: Text("\(number == 1 ? "1 star" : "\(number) stars")"))
+                    .accessibility(removeTraits: .isImage)
+                    .accessibility(addTraits: number > self.rating ? .isButton : [.isButton, .isSelected])
                     .onTapGesture {
                         self.rating = number
                 }
