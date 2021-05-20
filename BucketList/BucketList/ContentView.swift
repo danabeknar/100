@@ -11,7 +11,7 @@ import MapKit
 
 struct ContentView: View {
     var loadingState = LoadingState.loading
-    @State private var isUnlocked = false
+    @State private var isUnlocked = true
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var locations = [CodableMKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
@@ -44,13 +44,13 @@ struct ContentView: View {
                             showingEditScreen = true
                         }) {
                             Image(systemName: "plus")
+                                .padding()
+                                .background(Color.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing)
                         }
-                        .padding()
-                        .background(Color.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
                     }
                 }
             }
