@@ -14,6 +14,7 @@
 		A74F50092654573B009CF793 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F50082654573B009CF793 /* User.swift */; };
 		A74F500C265458D0009CF793 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F500B265458D0009CF793 /* LoadingState.swift */; };
 		A74F500F26545AEE009CF793 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74F500E26545AEE009CF793 /* MapView.swift */; };
+		A763740D2656971500E5D40A /* UnlockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A763740C2656971500E5D40A /* UnlockedView.swift */; };
 		A799D19C2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799D19B2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift */; };
 		A799D19F2655AD4A00A7D384 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799D19E2655AD4A00A7D384 /* EditView.swift */; };
 		A799D1A32655AF5300A7D384 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799D1A22655AF5300A7D384 /* Result.swift */; };
@@ -30,6 +31,7 @@
 		A74F50082654573B009CF793 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A74F500B265458D0009CF793 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		A74F500E26545AEE009CF793 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A763740C2656971500E5D40A /* UnlockedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedView.swift; sourceTree = "<group>"; };
 		A799D19B2655AD1700A7D384 /* MKPointAnnotation-ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-ObservableObject.swift"; sourceTree = "<group>"; };
 		A799D19E2655AD4A00A7D384 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		A799D1A22655AF5300A7D384 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				A799D19E2655AD4A00A7D384 /* EditView.swift */,
 				A799D1A52655B18D00A7D384 /* MKPointAnnotation-Codable.swift */,
 				A799D1A22655AF5300A7D384 /* Result.swift */,
+				A763740C2656971500E5D40A /* UnlockedView.swift */,
 			);
 			path = BucketList;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				A74F4FFB265456DC009CF793 /* ContentView.swift in Sources */,
 				A74F500F26545AEE009CF793 /* MapView.swift in Sources */,
 				A799D19F2655AD4A00A7D384 /* EditView.swift in Sources */,
+				A763740D2656971500E5D40A /* UnlockedView.swift in Sources */,
 				A74F4FF9265456DC009CF793 /* BucketListApp.swift in Sources */,
 				A799D1A62655B18D00A7D384 /* MKPointAnnotation-Codable.swift in Sources */,
 				A799D1A32655AF5300A7D384 /* Result.swift in Sources */,

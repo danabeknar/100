@@ -11,7 +11,7 @@ import MapKit
 
 struct ContentView: View {
     var loadingState = LoadingState.loading
-    @State private var isUnlocked = true
+    @State private var isUnlocked = false
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var locations = [CodableMKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
@@ -21,38 +21,11 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if isUnlocked {
-                MapView(centerCoordinate: $centerCoordinate,
-                        selectedPlace: $selectedPlace,
-                        showingPlaceDetails: $showingPlaceDetails,
-                        annotations: locations)
-                    .edgesIgnoringSafeArea(.all)
-                Circle()
-                    .fill(Color.blue)
-                    .opacity(0.3)
-                    .frame(width: 32, height: 32)
-                
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            let newLocation = CodableMKPointAnnotation()
-                            newLocation.coordinate = centerCoordinate
-                            newLocation.title = "Example location"
-                            locations.append(newLocation)
-                            selectedPlace = newLocation
-                            showingEditScreen = true
-                        }) {
-                            Image(systemName: "plus")
-                                .padding()
-                                .background(Color.black.opacity(0.75))
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .clipShape(Circle())
-                                .padding(.trailing)
-                        }
-                    }
-                }
+                UnlockedView(centerCoordinate: $centerCoordinate,
+                             locations: $locations,
+                             selectedPlace: $selectedPlace,
+                             showingPlaceDetails: $showingPlaceDetails,
+                             showingEditScreen: $showingEditScreen)
             }
             else {
                 Button("Unlock Places") {
@@ -71,11 +44,6 @@ struct ContentView: View {
                     showingEditScreen = true
             })
         }
-        .sheet(isPresented: $showingEditScreen, onDismiss: saveData) {
-            if selectedPlace != nil {
-                EditView(placemark: selectedPlace!)
-            }
-        }
         .onAppear(perform: loadData)
     }
     
@@ -87,16 +55,6 @@ struct ContentView: View {
             locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
         } catch {
             print("Unable to load saved data.")
-        }
-    }
-    
-    func saveData() {
-        do {
-            let filename = getDocumentsDirectory().appendingPathComponent("SavedPlaces")
-            let data = try JSONEncoder().encode(self.locations)
-            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
-        } catch {
-            print("Unable to save data.")
         }
     }
     
