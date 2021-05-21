@@ -10,12 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
-    @State private var sleepAmout = 8.0
+    @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
     
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @State private var showingAlert = false
+    
+    private var accessibleSleepAmount: String {
+        if floor(sleepAmount) == sleepAmount {
+            return String(format: "%g", Double(sleepAmount)) + " hours"
+        }
+
+        let hours = Int(floor(sleepAmount))
+        let minutesDecimal = sleepAmount - floor(sleepAmount)
+        let minutes = Int(minutesDecimal * 60)
+        return "\(hours) hours and " + "\(minutes) minutes"
+    }
     
     static var defaultWakeTime: Date {
         var components = DateComponents()
@@ -36,9 +47,10 @@ struct ContentView: View {
                 }
                 
                 Section(header: Text("Desired amount of sleep")) {
-                    Stepper(value: $sleepAmout, in: 4...12, step: 0.25) {
-                        Text("\(sleepAmout, specifier: "%g") hours")
+                    Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
+                        Text("\(sleepAmount, specifier: "%g") hours")
                     }
+                    .accessibility(value: Text(accessibleSleepAmount))
                 }
                 
                 Section(header: Text("Daily coffee intake")) {
@@ -46,10 +58,11 @@ struct ContentView: View {
                         ForEach (1..<20) { number in
                             if number == 1 {
                                 Text("\(number) cup")
+                                    .accessibility(label: Text("\(number) cup out of 20"))
                             } else {
                                 Text("\(number) cups")
+                                    .accessibility(label: Text("\(number) cups out of 20"))
                             }
-                            
                         }
                     }
                     .labelsHidden()
@@ -73,7 +86,7 @@ struct ContentView: View {
         let minute = (components.minute ?? 0) * 60
         
         do {
-            let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmout, coffee: Double(coffeeAmount))
+            let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount))
             
             let sleepTime = wakeUp - prediction.actualSleep
             let formatter = DateFormatter()
