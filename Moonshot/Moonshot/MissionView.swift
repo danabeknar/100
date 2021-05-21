@@ -16,6 +16,7 @@ struct MissionView: View {
     
     let mission: Mission
     let astronauts: [CrewMember]
+    private let accessibleMission: AccessibleMission
     
     init(mission: Mission, astronauts: [Astronaut]) {
         self.mission = mission
@@ -31,13 +32,14 @@ struct MissionView: View {
         }
         
         self.astronauts = matches
+        accessibleMission = AccessibleMission(mission: mission)
     }
     
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
                 VStack {
-                    Image(self.mission.image)
+                    Image(decorative: self.mission.image)
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: geometry.size.width * 0.7)
@@ -46,14 +48,21 @@ struct MissionView: View {
                     Text(self.mission.formattedLaunchDate)
                         .font(.caption)
                         .padding()
+                        .accessibility(label: Text(accessibleMission.date))
                     
                     Text(self.mission.description)
                         .padding()
+                        .accessibility(label: Text(accessibleMission.description))
+                    
+                    Text("Astronauts")
+                        .hidden()
+                        .frame(width: 0, height: 0)
+                        .accessibility(label: Text("Astronauts"))
                     
                     ForEach(self.astronauts, id: \.role) { crewMember in
                         NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)) {
                             HStack {
-                                Image(crewMember.astronaut.id)
+                                Image(decorative: crewMember.astronaut.id)
                                     .resizable()
                                     .frame(width: 83, height: 60)
                                     .clipShape(Capsule())
@@ -65,6 +74,8 @@ struct MissionView: View {
                                     Text(crewMember.role)
                                         .foregroundColor(.secondary)
                                 }
+                                .accessibilityElement(children: .ignore)
+                                .accessibility(label: Text(crewMember.role + crewMember.astronaut.name))
                                 
                                 Spacer()
                             }
