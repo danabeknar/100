@@ -18,7 +18,7 @@ struct CheckoutView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                Image("cupcakes")
+                Image(decorative: "cupcakes")
                     .resizable()
                     .scaledToFit()
                     .frame(width: geo.size.width)
