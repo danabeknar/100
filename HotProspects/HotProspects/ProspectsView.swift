@@ -18,6 +18,7 @@ struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
     
     @State private var isShowingScanner = false
+    @State private var isShowingSortingActionSheet = false
     
     var title: String {
         switch filter {
@@ -57,6 +58,19 @@ struct ProspectsView: View {
                             Image(systemName: prospect.isContacted ? "checkmark.circle" : "questionmark.diamond")
                         }
                     }
+                    .actionSheet(isPresented: $isShowingSortingActionSheet) {
+                        ActionSheet(
+                            title: Text("Sort by"),
+                            buttons: [
+                                .default(Text("Name")) {
+                                    prospects.sortByName()
+                                },
+                                .default(Text("Most recent")) {
+                                    prospects.sortByDate()
+                                },
+                                .cancel()
+                            ])
+                    }
                     .contextMenu {
                         Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted" ) {
                             prospects.toggle(prospect)
@@ -70,8 +84,12 @@ struct ProspectsView: View {
                 }
             }
             .navigationBarTitle(title)
-            .navigationBarItems(trailing: Button(action: {
-                self.isShowingScanner = true
+            .navigationBarItems(
+                leading: Button("Sort") {
+                    self.isShowingSortingActionSheet = true
+            },
+                trailing: Button(action: {
+                    self.isShowingScanner = true
             }) {
                 Image(systemName: "qrcode.viewfinder")
                 Text("Scan")

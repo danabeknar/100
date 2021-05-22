@@ -7,11 +7,20 @@
 
 import Foundation
 
-class Prospect: Identifiable, Codable {
+class Prospect: Identifiable, Codable, Comparable {
     var id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
+    var addedDate = Date()
     fileprivate(set) var isContacted = false
+    
+    static func < (lhs: Prospect, rhs: Prospect) -> Bool {
+        lhs.addedDate < rhs.addedDate
+    }
+    
+    static func == (lhs: Prospect, rhs: Prospect) -> Bool {
+        lhs.addedDate == rhs.addedDate
+    }
 }
 
 class Prospects: ObservableObject {
@@ -38,6 +47,14 @@ class Prospects: ObservableObject {
     func add(_ prospect: Prospect) {
         people.append(prospect)
         save()
+    }
+    
+    func sortByName() {
+        people.sort(by: { $0.name > $1.name })
+    }
+    
+    func sortByDate() {
+        people.sort(by: { $0.addedDate > $1.addedDate })
     }
     
     private func save() {
