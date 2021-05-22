@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Person: Codable, Identifiable {
+struct Person: Codable, Identifiable, Comparable {
     var id = UUID()
     let name: String
     let imageData: Data
@@ -19,5 +19,9 @@ struct Person: Codable, Identifiable {
     
     var image: UIImage {
         UIImage(data: imageData)!
+    }
+    
+    static func < (lhs: Person, rhs: Person) -> Bool {
+        lhs.name < rhs.name
     }
 }

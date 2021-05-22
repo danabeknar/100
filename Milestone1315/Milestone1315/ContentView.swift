@@ -65,7 +65,7 @@ struct ContentView: View {
         guard let image = image, !name.isEmpty else { return }
         let person = Person(name: name, image: image)
         persons.append(person)
-        saveData()
+        persons.sort()
     }
     
     
@@ -74,19 +74,21 @@ struct ContentView: View {
         
         do {
             let data = try Data(contentsOf: filename)
-            persons = try JSONDecoder().decode([Person].self, from: data)
+            persons = try JSONDecoder().decode([Person].self, from: data).sorted()
         } catch {
             print("Unable to load saved data.")
         }
     }
     
     private func saveData() {
-        do {
-            let filename = getDocumentsDirectory().appendingPathComponent(path)
-            let data = try JSONEncoder().encode(self.persons)
-            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
-        } catch {
-            print("Unable to save data.")
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let filename = getDocumentsDirectory().appendingPathComponent(path)
+                let data = try JSONEncoder().encode(self.persons)
+                try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+            } catch {
+                print("Unable to save data.")
+            }
         }
     }
     
