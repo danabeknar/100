@@ -82,7 +82,7 @@ struct ProspectsView: View {
             person.name = details[0]
             person.emailAddress = details[1]
 
-            self.prospects.people.append(person)
+            prospects.add(person)
         case .failure( _):
             print("Scanning failed")
         }
