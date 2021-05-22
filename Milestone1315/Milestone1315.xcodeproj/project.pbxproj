@@ -12,10 +12,14 @@
 		A795597626591C5D0090C91C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A795597526591C5D0090C91C /* Assets.xcassets */; };
 		A795597926591C5D0090C91C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A795597826591C5D0090C91C /* Preview Assets.xcassets */; };
 		A795598226591CDC0090C91C /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795598126591CDC0090C91C /* ImagePickerView.swift */; };
-		A7955985265921140090C91C /* NameAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7955984265921140090C91C /* NameAlertView.swift */; };
 		A79559882659235F0090C91C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79559872659235F0090C91C /* Person.swift */; };
 		A795598B26592B4E0090C91C /* DetailPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795598A26592B4E0090C91C /* DetailPersonView.swift */; };
 		A795598E26592C130090C91C /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795598D26592C130090C91C /* PersonView.swift */; };
+		A7BED1D52659712C008BFA19 /* PersonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BED1D42659712C008BFA19 /* PersonAlertView.swift */; };
+		A7BED1D8265972FA008BFA19 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BED1D7265972FA008BFA19 /* MapView.swift */; };
+		A7BED1DB265973C4008BFA19 /* MKPointAnnotation-Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BED1DA265973C4008BFA19 /* MKPointAnnotation-Codable.swift */; };
+		A7BED1DF265977A8008BFA19 /* PersonMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BED1DE265977A8008BFA19 /* PersonMapView.swift */; };
+		A7BED1E226597C38008BFA19 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BED1E126597C38008BFA19 /* LocationFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +30,14 @@
 		A795597826591C5D0090C91C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A795597A26591C5D0090C91C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A795598126591CDC0090C91C /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
-		A7955984265921140090C91C /* NameAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAlertView.swift; sourceTree = "<group>"; };
 		A79559872659235F0090C91C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A795598A26592B4E0090C91C /* DetailPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersonView.swift; sourceTree = "<group>"; };
 		A795598D26592C130090C91C /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
+		A7BED1D42659712C008BFA19 /* PersonAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAlertView.swift; sourceTree = "<group>"; };
+		A7BED1D7265972FA008BFA19 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A7BED1DA265973C4008BFA19 /* MKPointAnnotation-Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-Codable.swift"; sourceTree = "<group>"; };
+		A7BED1DE265977A8008BFA19 /* PersonMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonMapView.swift; sourceTree = "<group>"; };
+		A7BED1E126597C38008BFA19 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +76,14 @@
 				A795597A26591C5D0090C91C /* Info.plist */,
 				A795597726591C5D0090C91C /* Preview Content */,
 				A795598126591CDC0090C91C /* ImagePickerView.swift */,
-				A7955984265921140090C91C /* NameAlertView.swift */,
 				A79559872659235F0090C91C /* Person.swift */,
 				A795598A26592B4E0090C91C /* DetailPersonView.swift */,
 				A795598D26592C130090C91C /* PersonView.swift */,
+				A7BED1D42659712C008BFA19 /* PersonAlertView.swift */,
+				A7BED1D7265972FA008BFA19 /* MapView.swift */,
+				A7BED1DA265973C4008BFA19 /* MKPointAnnotation-Codable.swift */,
+				A7BED1DE265977A8008BFA19 /* PersonMapView.swift */,
+				A7BED1E126597C38008BFA19 /* LocationFetcher.swift */,
 			);
 			path = Milestone1315;
 			sourceTree = "<group>";
@@ -155,10 +167,14 @@
 			files = (
 				A79559882659235F0090C91C /* Person.swift in Sources */,
 				A795597426591C5C0090C91C /* ContentView.swift in Sources */,
+				A7BED1D52659712C008BFA19 /* PersonAlertView.swift in Sources */,
 				A795598226591CDC0090C91C /* ImagePickerView.swift in Sources */,
-				A7955985265921140090C91C /* NameAlertView.swift in Sources */,
+				A7BED1E226597C38008BFA19 /* LocationFetcher.swift in Sources */,
 				A795598B26592B4E0090C91C /* DetailPersonView.swift in Sources */,
 				A795597226591C5C0090C91C /* Milestone1315App.swift in Sources */,
+				A7BED1DB265973C4008BFA19 /* MKPointAnnotation-Codable.swift in Sources */,
+				A7BED1D8265972FA008BFA19 /* MapView.swift in Sources */,
+				A7BED1DF265977A8008BFA19 /* PersonMapView.swift in Sources */,
 				A795598E26592C130090C91C /* PersonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

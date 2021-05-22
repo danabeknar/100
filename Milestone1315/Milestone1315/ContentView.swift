@@ -9,17 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showingPicker = false
-    @State private var image: UIImage?
-    @State private var showingNamingAlert = false
-    @State private var name = ""
-    @State private var persons: [Person] = []
-    private let path = "SavedPersons"
+    @State private var showingPersonAddDetails = false
     
-    private var addPersonButton: some View {
-        Button("Select a picture") {
-            showingPicker.toggle()
-        }
-    }
+    @State private var image: UIImage?
+    @State private var name = ""
+    
+    @State private var persons: [Person] = []
+    @State private var currentPerson: Person?
+    
+    private let path = "SavedPersons"
     
     var body: some View {
         NavigationView {
@@ -34,13 +32,21 @@ struct ContentView: View {
                     }
                 }
                 
-                if showingNamingAlert {
-                    NameAlertView(name: $name, onDismiss: saveImageAndName)
+                if showingPersonAddDetails {
+                    PersonAlertView(
+                        person: currentPerson!,
+                        onDismiss: {
+                            showingPersonAddDetails.toggle()
+                            addPerson()
+                        })
                 }
             }
             .onAppear(perform: loadData)
             .navigationTitle("Persons")
-            .navigationBarItems(trailing: addPersonButton)
+            .navigationBarItems(trailing:
+                Button("Select a picture") {
+                    showingPicker.toggle()
+            })
         }
         .sheet(isPresented: $showingPicker, onDismiss: askUserToNamePhotoIfNeeded) {
             ImagePickerView(image: $image)
@@ -48,18 +54,17 @@ struct ContentView: View {
     }
     
     private func askUserToNamePhotoIfNeeded() {
-        if image == nil { return }
+        guard let image = image else { return }
         
-        showingNamingAlert = true
+        currentPerson = Person()
+        currentPerson?.image = image
+        showingPersonAddDetails = true
     }
     
-    private func saveImageAndName() {
-        showingNamingAlert = false
+    private func addPerson() {
+        guard let currentPerson = currentPerson else { return }
         
-        guard let image = image, !name.isEmpty else { return }
-        let person = Person(name: name, image: image)
-        persons.append(person)
-        persons.sort()
+        persons.append(currentPerson)
         saveData()
     }
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DetailPersonView: View {
     let person: Person
@@ -15,6 +16,9 @@ struct DetailPersonView: View {
             Image(uiImage: person.image)
                 .resizable()
                 .scaledToFit()
+            
+            PersonMapView(centerCoordinate: CLLocationCoordinate2D(latitude: person.coordinate.coordinate.latitude,
+                                                                   longitude: person.coordinate.coordinate.longitude))
         }
         .navigationTitle(person.name)
     }
@@ -22,6 +26,6 @@ struct DetailPersonView: View {
 
 struct DetailPersonView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailPersonView(person: Person(name: "test", image: UIImage()))
+        DetailPersonView(person: Person())
     }
 }

@@ -25,6 +25,6 @@ struct PersonView: View {
 
 struct PersonView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonView(person: Person(name: "Test", image: UIImage()))
+        PersonView(person: Person())
     }
 }
