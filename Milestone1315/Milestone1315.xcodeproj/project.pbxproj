@@ -14,6 +14,8 @@
 		A795598226591CDC0090C91C /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795598126591CDC0090C91C /* ImagePickerView.swift */; };
 		A7955985265921140090C91C /* NameAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7955984265921140090C91C /* NameAlertView.swift */; };
 		A79559882659235F0090C91C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79559872659235F0090C91C /* Person.swift */; };
+		A795598B26592B4E0090C91C /* DetailPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795598A26592B4E0090C91C /* DetailPersonView.swift */; };
+		A795598E26592C130090C91C /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795598D26592C130090C91C /* PersonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		A795598126591CDC0090C91C /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		A7955984265921140090C91C /* NameAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAlertView.swift; sourceTree = "<group>"; };
 		A79559872659235F0090C91C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		A795598A26592B4E0090C91C /* DetailPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersonView.swift; sourceTree = "<group>"; };
+		A795598D26592C130090C91C /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				A795598126591CDC0090C91C /* ImagePickerView.swift */,
 				A7955984265921140090C91C /* NameAlertView.swift */,
 				A79559872659235F0090C91C /* Person.swift */,
+				A795598A26592B4E0090C91C /* DetailPersonView.swift */,
+				A795598D26592C130090C91C /* PersonView.swift */,
 			);
 			path = Milestone1315;
 			sourceTree = "<group>";
@@ -151,7 +157,9 @@
 				A795597426591C5C0090C91C /* ContentView.swift in Sources */,
 				A795598226591CDC0090C91C /* ImagePickerView.swift in Sources */,
 				A7955985265921140090C91C /* NameAlertView.swift in Sources */,
+				A795598B26592B4E0090C91C /* DetailPersonView.swift in Sources */,
 				A795597226591C5C0090C91C /* Milestone1315App.swift in Sources */,
+				A795598E26592C130090C91C /* PersonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

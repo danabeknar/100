@@ -27,14 +27,8 @@ struct ContentView: View {
                 VStack {
                     List {
                         ForEach(persons) { person in
-                            HStack {
-                                Image(uiImage: person.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 44, height: 44)
-                                
-                                Text(person.name)
-                                    .font(.headline)
+                            NavigationLink(destination: DetailPersonView(person: person)) {
+                                PersonView(person: person)
                             }
                         }
                     }
