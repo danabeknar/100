@@ -10,16 +10,34 @@ import SwiftUI
 struct ContentView: View {
     @State private var showingPicker = false
     @State private var image: UIImage?
+    @State private var showingNamingAlert = false
+    @State private var name = ""
     
     var body: some View {
-        VStack {
-            Button("Select a picture") {
-                showingPicker.toggle()
+        ZStack {
+            VStack {
+                Button("Select a picture") {
+                    showingPicker.toggle()
+                }
+            }
+            
+            if showingNamingAlert {
+                NameAlertView(name: $name, onDismiss: saveImageAndName)
             }
         }
-        .sheet(isPresented: $showingPicker) {
+        .sheet(isPresented: $showingPicker, onDismiss: askUserToNamePhotoIfNeeded) {
             ImagePickerView(image: $image)
         }
+    }
+    
+    private func askUserToNamePhotoIfNeeded() {
+        if image == nil { return }
+        
+        showingNamingAlert = true
+    }
+    
+    private func saveImageAndName() {
+        showingNamingAlert = false
     }
 }
 
