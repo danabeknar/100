@@ -60,6 +60,7 @@ struct ContentView: View {
         let person = Person(name: name, image: image)
         persons.append(person)
         persons.sort()
+        saveData()
     }
     
     
