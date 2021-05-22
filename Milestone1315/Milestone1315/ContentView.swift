@@ -12,18 +12,41 @@ struct ContentView: View {
     @State private var image: UIImage?
     @State private var showingNamingAlert = false
     @State private var name = ""
+    @State private var persons: [Person] = []
+    private let path = "SavedPersons"
+    
+    private var addPersonButton: some View {
+        Button("Select a picture") {
+            showingPicker.toggle()
+        }
+    }
     
     var body: some View {
-        ZStack {
-            VStack {
-                Button("Select a picture") {
-                    showingPicker.toggle()
+        NavigationView {
+            ZStack {
+                VStack {
+                    List {
+                        ForEach(persons) { person in
+                            HStack {
+                                Image(uiImage: person.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 44, height: 44)
+                                
+                                Text(person.name)
+                                    .font(.headline)
+                            }
+                        }
+                    }
+                }
+                
+                if showingNamingAlert {
+                    NameAlertView(name: $name, onDismiss: saveImageAndName)
                 }
             }
-            
-            if showingNamingAlert {
-                NameAlertView(name: $name, onDismiss: saveImageAndName)
-            }
+            .onAppear(perform: loadData)
+            .navigationTitle("Persons")
+            .navigationBarItems(trailing: addPersonButton)
         }
         .sheet(isPresented: $showingPicker, onDismiss: askUserToNamePhotoIfNeeded) {
             ImagePickerView(image: $image)
@@ -38,6 +61,37 @@ struct ContentView: View {
     
     private func saveImageAndName() {
         showingNamingAlert = false
+        
+        guard let image = image, !name.isEmpty else { return }
+        let person = Person(name: name, image: image)
+        persons.append(person)
+        saveData()
+    }
+    
+    
+    private func loadData() {
+        let filename = getDocumentsDirectory().appendingPathComponent(path)
+        
+        do {
+            let data = try Data(contentsOf: filename)
+            persons = try JSONDecoder().decode([Person].self, from: data)
+        } catch {
+            print("Unable to load saved data.")
+        }
+    }
+    
+    private func saveData() {
+        do {
+            let filename = getDocumentsDirectory().appendingPathComponent(path)
+            let data = try JSONEncoder().encode(self.persons)
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("Unable to save data.")
+        }
+    }
+    
+    private func getDocumentsDirectory() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 }
 

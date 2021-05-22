@@ -13,6 +13,7 @@
 		A795597926591C5D0090C91C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A795597826591C5D0090C91C /* Preview Assets.xcassets */; };
 		A795598226591CDC0090C91C /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795598126591CDC0090C91C /* ImagePickerView.swift */; };
 		A7955985265921140090C91C /* NameAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7955984265921140090C91C /* NameAlertView.swift */; };
+		A79559882659235F0090C91C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79559872659235F0090C91C /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A795597A26591C5D0090C91C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A795598126591CDC0090C91C /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		A7955984265921140090C91C /* NameAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAlertView.swift; sourceTree = "<group>"; };
+		A79559872659235F0090C91C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				A795597726591C5D0090C91C /* Preview Content */,
 				A795598126591CDC0090C91C /* ImagePickerView.swift */,
 				A7955984265921140090C91C /* NameAlertView.swift */,
+				A79559872659235F0090C91C /* Person.swift */,
 			);
 			path = Milestone1315;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79559882659235F0090C91C /* Person.swift in Sources */,
 				A795597426591C5C0090C91C /* ContentView.swift in Sources */,
 				A795598226591CDC0090C91C /* ImagePickerView.swift in Sources */,
 				A7955985265921140090C91C /* NameAlertView.swift in Sources */,
