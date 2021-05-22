@@ -24,10 +24,15 @@ class DelayedUpdater: ObservableObject {
 }
 
 struct ContentView: View {
-    @ObservedObject var updater = DelayedUpdater()
 
     var body: some View {
-        Text("Value is: \(updater.value)")
+        Image("alienGreen")
+            .interpolation(.none)
+            .resizable()
+            .scaledToFit()
+            .frame(maxHeight: .infinity)
+            .background(Color.black)
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
