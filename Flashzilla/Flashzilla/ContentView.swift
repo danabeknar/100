@@ -9,13 +9,8 @@ import SwiftUI
 import CoreHaptics
 
 struct ContentView: View {
-    @Environment(\.accessibilityReduceTransparency) var reduceTransparency
     var body: some View {
-        Text("Hello, World!")
-            .padding()
-            .background(reduceTransparency ? Color.black : Color.black.opacity(0.5))
-            .foregroundColor(Color.white)
-            .clipShape(Capsule())
+        CardView(card: Card.example)
     }
 }
 

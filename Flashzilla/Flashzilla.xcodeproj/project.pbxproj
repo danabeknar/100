@@ -11,6 +11,8 @@
 		A710E3A9265A9C7F00FDF14C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A710E3A8265A9C7F00FDF14C /* ContentView.swift */; };
 		A710E3AB265A9C8000FDF14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A710E3AA265A9C8000FDF14C /* Assets.xcassets */; };
 		A710E3AE265A9C8000FDF14C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A710E3AD265A9C8000FDF14C /* Preview Assets.xcassets */; };
+		A7E23310265AABDC00E7E457 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2330F265AABDC00E7E457 /* Card.swift */; };
+		A7E23313265AAC6700E7E457 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E23312265AAC6700E7E457 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		A710E3AA265A9C8000FDF14C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A710E3AD265A9C8000FDF14C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A710E3AF265A9C8000FDF14C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7E2330F265AABDC00E7E457 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		A7E23312265AAC6700E7E457 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				A710E3A6265A9C7F00FDF14C /* FlashzillaApp.swift */,
 				A710E3A8265A9C7F00FDF14C /* ContentView.swift */,
+				A7E2330F265AABDC00E7E457 /* Card.swift */,
+				A7E23312265AAC6700E7E457 /* CardView.swift */,
 				A710E3AA265A9C8000FDF14C /* Assets.xcassets */,
 				A710E3AF265A9C8000FDF14C /* Info.plist */,
 				A710E3AC265A9C8000FDF14C /* Preview Content */,
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A710E3A9265A9C7F00FDF14C /* ContentView.swift in Sources */,
+				A7E23310265AABDC00E7E457 /* Card.swift in Sources */,
+				A7E23313265AAC6700E7E457 /* CardView.swift in Sources */,
 				A710E3A7265A9C7F00FDF14C /* FlashzillaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
