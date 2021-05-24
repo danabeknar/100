@@ -12,6 +12,8 @@ struct EditCards: View {
     @State private var cards = [Card]()
     @State private var newPrompt = ""
     @State private var newAnswer = ""
+    
+    var onDismiss: (() -> Void)?
 
     var body: some View {
         NavigationView {
@@ -44,6 +46,7 @@ struct EditCards: View {
 
     func dismiss() {
         presentationMode.wrappedValue.dismiss()
+        onDismiss?()
     }
 
     func loadData() {

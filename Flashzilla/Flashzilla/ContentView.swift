@@ -15,15 +15,27 @@ extension View {
     }
 }
 
+enum ActiveSheet: Identifiable {
+    case edit, settings
+    
+    var id: Int {
+        hashValue
+    }
+}
+
+
 struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
 
     @State private var cards = [Card]()
-    @State private var showingEditScreen = false
+    @State private var activeSheet: ActiveSheet?
+    
+    @State private var isGameInfinite = false
 
     @State private var timeRemaining = 100
     @State private var isActive = true
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -47,13 +59,13 @@ struct ContentView: View {
 
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
+                        CardView(card: cards[index]) { isRight in
                            withAnimation {
-                               removeCard(at: index)
+                                removeCard(at: index, isRight: isRight)
                            }
                         }
                         .stacked(at: index, in: cards.count)
-                        .allowsHitTesting(index == cards.count - 1)
+//                        .allowsHitTesting(index == cards.count - 1)
                         .accessibility(hidden: index < cards.count - 1)
                     }
                 }
@@ -73,9 +85,18 @@ struct ContentView: View {
                     Spacer()
 
                     Button(action: {
-                        self.showingEditScreen = true
+                        activeSheet = .edit
                     }) {
                         Image(systemName: "plus.circle")
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+                    
+                    Button(action: {
+                        activeSheet = .settings
+                    }) {
+                        Image(systemName: "gear")
                             .padding()
                             .background(Color.black.opacity(0.7))
                             .clipShape(Circle())
@@ -95,7 +116,7 @@ struct ContentView: View {
                     HStack {
                         Button(action: {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(at: cards.count - 1, isRight: false)
                             }
                         }) {
                             Image(systemName: "xmark.circle")
@@ -109,7 +130,7 @@ struct ContentView: View {
 
                         Button(action: {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(at: cards.count - 1, isRight: true)
                             }
                         }) {
                             Image(systemName: "checkmark.circle")
@@ -141,16 +162,26 @@ struct ContentView: View {
                 timeRemaining -= 1
             }
         }
-        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
-            EditCards()
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .edit:
+                EditCards(onDismiss: resetCards)
+            case .settings:
+                SettingsView(shouldCardsGoBack: $isGameInfinite)
+            }
         }
         .onAppear(perform: resetCards)
     }
 
-    func removeCard(at index: Int) {
+    func removeCard(at index: Int, isRight: Bool) {
         guard index >= 0 else { return }
 
-        cards.remove(at: index)
+        let card = cards.remove(at: index)
+        if isGameInfinite && !isRight {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                cards.insert(card, at: 0)
+            }
+        }
 
         if cards.isEmpty {
             isActive = false

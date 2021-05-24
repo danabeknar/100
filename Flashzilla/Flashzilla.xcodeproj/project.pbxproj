@@ -14,6 +14,7 @@
 		A7E23310265AABDC00E7E457 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2330F265AABDC00E7E457 /* Card.swift */; };
 		A7E23313265AAC6700E7E457 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E23312265AAC6700E7E457 /* CardView.swift */; };
 		A7E23316265AC05B00E7E457 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E23315265AC05B00E7E457 /* EditCards.swift */; };
+		A7EBC57F265C128E0032CDBF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EBC57E265C128E0032CDBF /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A7E2330F265AABDC00E7E457 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A7E23312265AAC6700E7E457 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		A7E23315265AC05B00E7E457 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
+		A7EBC57E265C128E0032CDBF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				A710E3A6265A9C7F00FDF14C /* FlashzillaApp.swift */,
 				A710E3A8265A9C7F00FDF14C /* ContentView.swift */,
+				A7EBC57E265C128E0032CDBF /* SettingsView.swift */,
 				A7E2330F265AABDC00E7E457 /* Card.swift */,
 				A7E23312265AAC6700E7E457 /* CardView.swift */,
 				A710E3AA265A9C8000FDF14C /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 				A710E3A9265A9C7F00FDF14C /* ContentView.swift in Sources */,
 				A7E23310265AABDC00E7E457 /* Card.swift in Sources */,
 				A7E23313265AAC6700E7E457 /* CardView.swift in Sources */,
+				A7EBC57F265C128E0032CDBF /* SettingsView.swift in Sources */,
 				A7E23316265AC05B00E7E457 /* EditCards.swift in Sources */,
 				A710E3A7265A9C7F00FDF14C /* FlashzillaApp.swift in Sources */,
 			);
