@@ -34,14 +34,14 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
-                Text("Time: \(timeRemaining)")
+                Text(timeRemaining > 0 ? "Time: \(timeRemaining)" : "Time is up")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 5)
                     .background(
                         Capsule()
-                            .fill(Color.black)
+                            .fill(timeRemaining > 0 ? Color.black : Color.red)
                             .opacity(0.75)
                     )
 
