@@ -13,10 +13,11 @@ class Favorites: ObservableObject {
     private let saveKey = "Favorites"
 
     init() {
-        // load our saved data
-
-        // still here? Use an empty array
-        self.resorts = []
+        if let resorts = UserDefaults.standard.value(forKey: saveKey) as? [String] {
+            self.resorts = Set(resorts.map { $0} )
+        } else {
+            self.resorts = []
+        }
     }
     
     func contains(_ resort: Resort) -> Bool {
@@ -36,6 +37,6 @@ class Favorites: ObservableObject {
     }
 
     func save() {
-        // write out our data
+        UserDefaults.standard.setValue(Array(resorts), forKey: saveKey)
     }
 }
