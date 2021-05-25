@@ -20,10 +20,26 @@ struct ListMissionView: View {
         self.astronauts = astronauts
         accessibleMission = AccessibleMission(mission: mission)
     }
-
+    
     var body: some View {
         NavigationLink(destination: MissionView(mission: mission, astronauts: astronauts)) {
-
+                Image(mission.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 44, height: 44)
+                
+                VStack(alignment: .leading) {
+                    Text(mission.displayName)
+                        .font(.headline)
+                    
+                    if (self.isDatePresented) {
+                        Text(mission.formattedLaunchDate)
+                            .accessibility(label: Text(accessibleMission.date))
+                    } else {
+                        Text(mission.crewNames(from: astronauts))
+                            .accessibility(label: Text(accessibleMission.crewNames(astronauts: astronauts)))
+                }
+            }
         }
     }
 }

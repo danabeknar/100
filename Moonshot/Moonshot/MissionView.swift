@@ -36,14 +36,17 @@ struct MissionView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { geo in
             ScrollView(.vertical) {
                 VStack {
-                    Image(decorative: self.mission.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: geometry.size.width * 0.7)
-                        .padding(.top)
+                    GeometryReader { imageGeo in
+                        Image(decorative: self.mission.image)
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.top)
+                            .frame(width: imageGeo.size.width, height: imageGeo.size.height)
+                            .scaleEffect(1 - ((geo.safeAreaInsets.top - imageGeo.frame(in: .global).minY) / 700))
+                    }
                     
                     Text(self.mission.formattedLaunchDate)
                         .font(.caption)
