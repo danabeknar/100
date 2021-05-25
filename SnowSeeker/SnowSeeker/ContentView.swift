@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+
+extension View {
+    func phoneOnlyStackNavigationView() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
+        } else {
+            return AnyView(self)
+        }
+    }
+}
+
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
@@ -32,10 +43,13 @@ struct ContentView: View {
                         Text("\(resort.runs) runs")
                             .foregroundColor(.secondary)
                     }
-                } 
+                }
             }
             .navigationBarTitle("Resoirts")
+            
+            WelcomeView()
         }
+        .phoneOnlyStackNavigationView()
     }
 }
 
