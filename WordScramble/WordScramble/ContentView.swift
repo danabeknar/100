@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var usedWords = [String]()
+    @State private var usedWords = ["test","asd","qwe","zxc","we","qwe","f","tasest", "gas", "treq", "fgqw", "q", "a", "x", "e", "r", "t", "y", "u"]
     @State private var rootWord = ""
     @State private var newWord = ""
     
@@ -26,12 +26,15 @@ struct ContentView: View {
                     .autocapitalization(.none)
                 
                 List(usedWords, id: \.self) { word in
-                    HStack {
-                        Image(systemName: "\(word.count).circle")
-                        Text(word)
+                    GeometryReader { geo in
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            Text(word)
+                        }
+                        .accessibilityElement(children: .ignore)
+                        .accessibility(label: Text("\(word), \(word.count) letters"))
+                        .offset(x: offsetForUsedWord(word, geo: geo))
                     }
-                    .accessibilityElement(children: .ignore)
-                    .accessibility(label: Text("\(word), \(word.count) letters"))
                 }
                 
                 Text("Your score: \(usedWords.count)")
@@ -42,6 +45,16 @@ struct ContentView: View {
             .alert(isPresented: $showingError) {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("Ok")))
             }
+        }
+    }
+    
+    func offsetForUsedWord(_ word: String, geo: GeometryProxy) -> CGFloat {
+        let index = CGFloat(usedWords.firstIndex(of: word)!)
+        
+        if index > 10 {
+            return index * 2 + geo.frame(in: .global).minX
+        } else {
+            return geo.frame(in: .local).minX
         }
     }
     
