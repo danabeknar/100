@@ -29,6 +29,7 @@ struct ContentView: View {
                     GeometryReader { geo in
                         HStack {
                             Image(systemName: "\(word.count).circle")
+                                .foregroundColor(colorForUsedWord(word, geo: geo))
                             Text(word)
                         }
                         .accessibilityElement(children: .ignore)
@@ -56,6 +57,16 @@ struct ContentView: View {
         } else {
             return geo.frame(in: .local).minX
         }
+    }
+    
+    func colorForUsedWord(_ word: String, geo: GeometryProxy) -> Color {
+        let index = Double(usedWords.firstIndex(of: word)!)
+        let minY = Double(geo.frame(in: .local).minY)
+        let maxY = Double(geo.frame(in: .local).maxY)
+        
+        return Color(hue: minY/maxY + index/Double(usedWords.count),
+                     saturation: 0.9,
+                     brightness: 0.9)
     }
     
     func startGame() {
