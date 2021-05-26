@@ -19,12 +19,19 @@ extension View {
 }
 
 struct ContentView: View {
-    let resorts: [Resort] = Bundle.main.decode("resorts.json")
+    @State private var filteredResorts: [Resort] = Bundle.main.decode("resorts.json")
     @ObservedObject var favorites = Favorites()
+    
+    @State private var showSorting = false
+    @State private var sortType: SortType = .default
+    @State private var selectedCountry = "All"
+    @State private var selectedSize = "All"
+    @State private var selectedPrice = "All"
+    private let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
     var body: some View {
         NavigationView {
-            List(resorts) { resort in
+            List(filteredResorts) { resort in
                 NavigationLink(destination: ResortView(resort: resort)) {
                     Image(resort.country)
                         .resizable()
@@ -54,12 +61,50 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle("Resoirts")
+            .navigationBarTitle("Resorts")
+            .navigationBarItems(trailing: (
+                Button(action: {
+                    showSorting = true
+                }, label: {
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                })
+            )
+            )
             
             WelcomeView()
         }
         .environmentObject(favorites)
         .phoneOnlyStackNavigationView()
+        .sheet(isPresented: $showSorting, onDismiss: sortResorts) {
+            SortAndFilterView(resorts: resorts,
+                              sortType: $sortType,
+                              selectedCountry: $selectedCountry,
+                              selectedSize: $selectedSize,
+                              selectedPrice: $selectedPrice)
+        }
+    }
+    
+    func sortResorts() {
+        var resorts = self.resorts
+        if sortType == .alphabetical {
+            resorts.sort(by: { $0.name > $1.name })
+        } else if sortType == .country {
+            resorts.sort(by: { $0.country > $1.country })
+        }
+        
+        if selectedCountry != "All" {
+            resorts = resorts.filter { $0.country == selectedCountry }
+        }
+        
+        if selectedSize != "All" {
+            resorts = resorts.filter { String($0.size) == selectedSize }
+        }
+        
+        if selectedPrice != "All" {
+            resorts = resorts.filter { String($0.price) == selectedPrice }
+        }
+        
+        filteredResorts = resorts
     }
 }
 
