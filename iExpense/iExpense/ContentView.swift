@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ExpenseItem: Identifiable, Codable {
-    let id = UUID()
+    let var = UUID()
     let name: String
     let type: String
     let amount: Int
